@@ -4,7 +4,7 @@
       <div class="novel-type-card" v-for=" (novels, index) in typeNovel " :key=index>
           <el-card class="box-card" >
           <div slot="header" class="clearfix" >
-            <span>{{ novels[1].booktype_id }}</span>
+            <span>{{ novels[1].booktype }}</span>
             <el-button style="float: right; padding: 3px 0" type="text">更多》》</el-button>
           </div>
           <div v-for="(novel,index) in novels" :key="index" class="text item">

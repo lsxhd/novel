@@ -5,7 +5,7 @@
     </div>
     <div class="search-box-icon" >
       <el-row>
-        <el-button icon="el-icon-search" circle></el-button>
+        <el-button icon="el-icon-search" circle @click="search()"></el-button>
       </el-row>
     </div>
   </div>
@@ -17,6 +17,16 @@ export default {
   data: function () {
     return {
       keyword: ''
+    }
+  },
+  methods: {
+    search () {
+      this.$router.push({
+        name: 'SearchBookList',
+        query: {
+          bookName: this.keyword
+        }
+      })
     }
   }
 }

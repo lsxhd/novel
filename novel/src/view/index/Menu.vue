@@ -8,10 +8,9 @@
           background-color="#545c64"
           text-color="#fff"
           active-text-color="#ffd04b">
-          <el-menu-item index="1" style="width: 25%"><a href="" target="_blank"><span style=" display: flex;justify-content: center;">全部作品</span></a></el-menu-item>
-          <el-menu-item index="2" style="width: 25%"><a href="" target="_blank"><span style=" display: flex;justify-content: center;">排行</span></a></el-menu-item>
-          <el-menu-item index="3" style="width: 25%"><a href="" target="_blank"><span style=" display: flex;justify-content: center;">完本</span></a></el-menu-item>
-          <el-menu-item index="4" style="width: 25%"><a href="" target="_blank"><span style=" display: flex;justify-content: center;">免费</span></a></el-menu-item>
+          <el-menu-item index="1" style="width: 25%"><a href="http://localhost:8080/#/allbook" target="_blank"><span style=" display: flex;justify-content: center;">全部作品</span></a></el-menu-item>
+          <el-menu-item index="2" style="width: 25%"><a href="http://localhost:8080/#/likebook" target="_blank"><span style=" display: flex;justify-content: center;">猜你喜欢</span></a></el-menu-item>
+          <el-menu-item index="4" style="width: 25%"><a href="/#/upload" target="_blank"><span style=" display: flex;justify-content: center;">上传</span></a></el-menu-item>
         </el-menu>
       </div>
     </div>

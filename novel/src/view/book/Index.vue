@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div><top></top></div>
     <div class="book-top1">
       <BookTop :novelInfo="NovelInfo"></BookTop>
     </div>
@@ -14,9 +15,10 @@
 import BookTop from './BookTop'
 import BookDirectory from './BookDirectory'
 import { getChapterNumber } from '@/api/book'
+import Top from '../../components/Top'
 export default {
   name: 'Index',
-  components: {BookDirectory, BookTop},
+  components: {Top, BookDirectory, BookTop},
   data: function () {
     return {
       NovelNumber: 0,
