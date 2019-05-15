@@ -32,6 +32,7 @@ export default {
       getChapter(this.$route.params.novelId, this.$route.query.chapterId).then(res => {
         this.title = '第' + this.$route.query.chapterId + '章'
         this.text = res.data.data
+        console.log(this.text)
       })
     },
     // 上一页

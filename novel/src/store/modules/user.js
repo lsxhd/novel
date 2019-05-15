@@ -1,43 +1,62 @@
 import { login, logout, getInfo } from '@/api/login'
-import { getToken, setToken, removeToken } from '@/utils/auth'
+import { getUser, setUser, removeUser } from '@/utils/auth'
 
 const user = {
   state: {
-    token: getToken(),
-    name: '',
-    avatar: '',
-    roles: []
+    userId: getUser()
   },
   mutations: {
-    SET_TOKEN: (state, token) => {
-      state.token = token
+    SET_USERID: (state, userId) => {
+      state.userId = userId
     },
-    SET_NAME: (state, name) => {
-      state.name = name
-    },
-    SET_AVATAR: (state, avatar) => {
-      state.avatar = avatar
-    },
-    SET_ROLES: (state, roles) => {
-      state.roles = roles
+    GET_USERID: (state) => {
+      return state.userId
     }
   },
 
   actions: {
     // 登录
-    Login ({ commit }, userInfo) {
-      const username = userInfo.username.trim()
+    Login ({ commit }, user) {
+      console.log('登录')
       return new Promise((resolve, reject) => {
-        login(username, userInfo.password).then(response => {
+        login(user).then(response => {
           const data = response
-          setToken(data.token)
-          commit('SET_TOKEN', data.token)
+          console.log('user 登录：')
+          console.log(data.data.data.id)
+          if (data.data.code === 2000) {
+            setUser(data.data.data.id)
+            commit('SET_USERID', data.data.data.id)
+          } else {
+            console.log('用户名或者密码不对1')
+          }
           resolve()
         }).catch(error => {
+          console.log('用户名或者密码不对')
           reject(error)
         })
       })
     },
+    // 管理员登录
+    // LoginManagement ({ commit }, user) {
+    //   console.log('管理员登录')
+    //   return new Promise((resolve, reject) => {
+    //     loginManagement(user).then(response => {
+    //       const data = response
+    //       console.log('user 登录：')
+    //       console.log(data.data.data.id)
+    //       if (data.data.code === 2000) {
+    //         setUser(data.data.data.id)
+    //         commit('SET_USERID', data.data.data.id)
+    //       } else {
+    //         console.log('用户名或者密码不对1')
+    //       }
+    //       resolve()
+    //     }).catch(error => {
+    //       console.log('用户名或者密码不对')
+    //       reject(error)
+    //     })
+    //   })
+    // },
 
     // 获取用户信息
     GetInfo ({ commit, state }) {
@@ -62,9 +81,8 @@ const user = {
     LogOut ({ commit, state }) {
       return new Promise((resolve, reject) => {
         logout(state.token).then(() => {
-          commit('SET_TOKEN', '')
-          commit('SET_ROLES', [])
-          removeToken()
+          commit('SET_USER', '')
+          removeUser()
           resolve()
         }).catch(error => {
           reject(error)
@@ -75,8 +93,9 @@ const user = {
     // 前端 登出
     FedLogOut ({ commit }) {
       return new Promise(resolve => {
-        commit('SET_TOKEN', '')
-        removeToken()
+        commit('SET_USERID', '')
+        console.log('登出')
+        removeUser()
         resolve()
       })
     }

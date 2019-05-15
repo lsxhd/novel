@@ -20,3 +20,44 @@ export function getChapter (bookId, chapterId) {
     params: {bookId, chapterId}
   })
 }
+export function upload (formDate) {
+  return request({
+    url: '/upload',
+    method: 'post',
+    ContentType: 'multipart/form-data',
+    withCredentials: false,
+    data: formDate
+  })
+}
+
+export function insertRate (bookRate) {
+  return request({
+    url: '/insertRate',
+    method: 'post',
+    data: bookRate
+  })
+}
+
+export function searchBooksByName (bookName, startNumber, endNumber) {
+  return request({
+    url: '/searchBooksByName',
+    method: 'get',
+    params: {bookName, startNumber, endNumber}
+  })
+}
+
+export function getAllBookByLimit (startNumber, endNumber) {
+  return request({
+    url: '/getAllBookByLimit',
+    method: 'get',
+    params: {startNumber, endNumber}
+  })
+}
+
+export function getRelationBook (userId) {
+  return request({
+    url: '/getRelationBook',
+    method: 'get',
+    params: {userId}
+  })
+}

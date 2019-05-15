@@ -1,13 +1,18 @@
 import request from '@/utils/request'
 
-export function login (username, password) {
+export function login (users) {
   return request({
-    url: '/user/login',
+    url: '/login',
     method: 'post',
-    data: {
-      username,
-      password
-    }
+    data: users
+  })
+}
+
+export function loginManagement (users) {
+  return request({
+    url: '/loginManagement',
+    method: 'post',
+    data: users
   })
 }
 

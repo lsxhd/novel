@@ -28,3 +28,13 @@ export function showOperation () {
     method: 'get'
   })
 }
+
+export function getUsersListByLimit (startNumber, endNumber) {
+  return request({
+    url: '/getUsersListByLimit',
+    method: 'get',
+    params: {
+      startNumber, endNumber
+    }
+  })
+}
